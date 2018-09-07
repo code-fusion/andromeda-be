@@ -1,0 +1,2 @@
+This is where you should be able to put your SQl files to load them
+as an alternative to queries.php functionality
