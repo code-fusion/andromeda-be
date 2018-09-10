@@ -31,3 +31,5 @@ spl_autoload_register(function ($clase) {
 
 require_once BASE . "db.config.php";
 require_once BASE . "functions.php";
+
+require_once __DIR__ . '/vendor/autoload.php';

@@ -12,4 +12,10 @@ class Example extends DomainObject {
 
     }
 
+    public function test2(){echo "test";}
+
+    public function test($name){
+    	echo json_encode(["algo" => "anduvo! " . $name]);
+    }
+
 }
