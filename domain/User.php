@@ -14,7 +14,7 @@ class User extends DomainObject
     protected $telephone;
     protected $activeUser;
 
-    public function __construct($id = '',$username, $password, $email, $name, $lastName, $telephone = '', $activeUser = true)
+    public function __construct($id = '',$username, $password, $email, $name, $lastName, $telephone = '', $activeUser)
     {
         parent::__construct();
 
@@ -24,16 +24,30 @@ class User extends DomainObject
         } else {
             // usuario existente
             $this->setId($id);
-            $this->password = $this->setPassword($password); //siempre y cuando no venga hasheado
         }
+        $this->setPassword($password); //siempre y cuando no venga hasheado
+        $this->setUsername($username);
+        $this->setEmail($email);
         $this->setName($name);
         $this->setLastname($lastName);
-        $this->setEmail($email);
-
+        $this->setTelephone($telephone);
+        $this->setActiveUser($activeUser);
     }
 
     public function getId() {
         return $this->id;
+    }
+
+    public function getPasswordHash() {
+        return $this->password;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getEmail() {
+        return $this->email;
     }
 
     public function getName() {
@@ -44,16 +58,28 @@ class User extends DomainObject
         return $this->lastName;
     }
 
-    public function getEmail() {
-        return $this->email;
+    public function getTelephone() {
+        return $this->telephone;
     }
 
-    public function getPasswordHash() {
-        return $this->password;
+    public function getActiveUser(){
+        return $this->activeUser;
     }
 
     public function setId($id) {
         $this->id = $id;
+    }
+
+    public function setPassword($password) {
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
     }
 
     public function setName($name) {
@@ -64,11 +90,11 @@ class User extends DomainObject
         $this->lastName = $lastname;
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
+    public function setTelephone($telephone) {
+        $this->telephone = $telephone;
     }
 
-    public function setPassword($password) {
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
+    public function setActiveUser($activeUser) {
+        $this->activeUser = $activeUser;
     }
 }
