@@ -14,7 +14,7 @@ class User extends DomainObject
     protected $telephone;
     protected $activeUser;
 
-    public function __construct($id = '',$username, $password, $email, $name, $lastName, $telephone = '', $activeUser)
+    public function __construct($id = null,$username, $password, $email, $name, $lastName, $telephone = '', $activeUser)
     {
         parent::__construct();
 
