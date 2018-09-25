@@ -1,7 +1,7 @@
 <?php
 
 namespace domain\User;
-
+require_once "../class/AuthHelper.class.php";
 use DomainObject;
 class User extends DomainObject
 {
@@ -13,30 +13,6 @@ class User extends DomainObject
     protected $lastName;
     protected $telephone;
     protected $activeUser;
-
-    public function __construct($id = null,$username, $password, $email, $name, $lastName, $telephone = '', $activeUser)
-    {
-        parent::__construct();
-
-        if (empty($id)) {
-            //nuevo usuario
-            $this->setPassword($password);
-        } else {
-            // usuario existente
-            $this->setId($id);
-        }
-        $this->setPassword($password); //siempre y cuando no venga hasheado
-        $this->setUsername($username);
-        $this->setEmail($email);
-        $this->setName($name);
-        $this->setLastname($lastName);
-        $this->setTelephone($telephone);
-        $this->setActiveUser($activeUser);
-    }
-
-    public function getId() {
-        return $this->id;
-    }
 
     public function getPasswordHash() {
         return $this->password;
@@ -86,8 +62,8 @@ class User extends DomainObject
         $this->name = $name;
     }
 
-    public function setLastName($lastname) {
-        $this->lastName = $lastname;
+    public function setLastName($lastName) {
+        $this->lastName = $lastName;
     }
 
     public function setTelephone($telephone) {
@@ -96,5 +72,23 @@ class User extends DomainObject
 
     public function setActiveUser($activeUser) {
         $this->activeUser = $activeUser;
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return string
+     */
+    public function login($email, $password) {
+        $credentials = [
+            'email' => $email,
+            'password' => $password
+        ];
+
+        $authLogin = new \AuthHelper();
+
+        $loginResponse = $authLogin->loginAuth($credentials);
+
+        return $loginResponse;
     }
 }

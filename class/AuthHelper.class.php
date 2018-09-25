@@ -3,14 +3,13 @@ use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\ValidationData;
 
-class Auth
+class AuthHelper
 {
-    public function login (Request $request){
+    public function _construct() {
 
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+    }
+
+    public function loginAuth ($credentials){
         //validate if its a valid user then build a token
         $token = (new Builder())->setIssuer('codeFusion')
             ->setAudience('codeFusion')
