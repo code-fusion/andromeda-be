@@ -13,6 +13,12 @@
         {
             "name": "Maximiliano Atanasio",
             "email": "maximilianoatanasio@hotmail.com"
+        },{
+            "name": "Guadalupe Perez",
+            "email": "guadalupe.perezb@gmail.com"
+        },{
+            "name": "Rodrigo Finamore",
+            "email": ""
         }
     ],
     "require-dev": {
