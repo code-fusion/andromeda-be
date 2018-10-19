@@ -6,9 +6,10 @@ const register = (req, res) => {
   newUser.setPassword(req.body.password);
   newUser.save((error) => {
     if (error) {
-      res.status(HTTP_CODES.DUPLICATED_RESOURCE).json(errorResponse('The user cannot be created'));
+      res.status(HTTP_CODES.DUPLICATED_RESOURCE).json(errorResponse(error.message));
+    } else {
+      res.status(HTTP_CODES.SUCCESS).json(newUser.toAuthJSON());
     }
-    res.status(HTTP_CODES.SUCCESS).json(newUser.toAuthJSON());
   });
 };
 
