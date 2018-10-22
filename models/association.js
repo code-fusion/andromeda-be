@@ -1,7 +1,9 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
-const AssociationModel = new Schema({
+const AssociationModel = new mongoose.Schema({
   name: { type: String },
+  flag: { type: String },
+  user_id: { type: mongoose.Schema.Types.ObjectId}
 });
 
-module.exports = model(AssociationModel);
+module.exports = mongoose.model("Association",AssociationModel);
