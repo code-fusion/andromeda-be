@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test-routes": "mocha \"./**/*.a-spec.js\""
+    "test-routes": "mocha \"./**/routes.a-spec.js\""
   },
   "repository": {
     "type": "git",
