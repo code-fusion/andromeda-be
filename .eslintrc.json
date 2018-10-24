@@ -3,5 +3,6 @@
     "rules": {
         "func-names": "off",
         "no-underscore-dangle": "off",
+        "arrow-parens": "off",
     }
 }

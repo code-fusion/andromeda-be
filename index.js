@@ -28,6 +28,6 @@ app.all('*', (req, res) => {
   res.status(HTTP_CODES.NOT_FOUND).json(errorResponse('Resource not found'));
 });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log('App listening on port 8000!');
 }); 
